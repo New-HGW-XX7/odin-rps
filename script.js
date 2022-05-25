@@ -35,8 +35,10 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
     let cC = 0; let pC = 0; let tC = 0;
+
     for (let i = 0; i < 5; i++) {
         const computerSelection = computerPlay(); // Has to be refreshed inside the function
+        const playerSelection = prompt("Rock, Paper, Scissors?");
         let check = playRound(playerSelection, computerSelection);
 
         (check.includes("Lose")) ? cC++ : (check.includes("Win")) ? pC++ : tC++;
@@ -59,5 +61,5 @@ function equalizeInput(string) {
     return string;
 }
 
-const playerSelection = "rock";
+// const playerSelection = "rock";
 // const computerSelection = computerPlay();
