@@ -34,18 +34,20 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let cC = 0; let pC = 0; let tC = 0;
+    let cC = 0; let pC = 0;
 
     for (let i = 0; i < 5; i++) {
         const computerSelection = computerPlay(); // Has to be refreshed inside the function
         const playerSelection = prompt("Rock, Paper, Scissors?");
         let check = playRound(playerSelection, computerSelection);
 
-        (check.includes("Lose")) ? cC++ : (check.includes("Win")) ? pC++ : tC++;
+        if(check.includes("Lose")) {cC++};
+        if(check.includes("Win")) {pC++}; 
 
         console.log(`Round ${i+1}: ` + check);
     }
-    if(tC === 5) {
+
+    if(cC === pC) {
         console.log("It's a Tie!");
     } else if(cC > pC) {
         console.log("Computer is the Winner!");
