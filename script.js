@@ -14,26 +14,29 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     // Equalize input - could be its own function to be called here
-    playerSelection = playerSelecion1.toLowerCase().charAt(0).toUpperCase() + playerSelecion1.slice(1);
+    playerSelection = equalizeInput(playerSelection);
 
     if(playerSelection === computerSelection) {
         return "Tie";
-    } else if((playerSelection === "Rock") && computerSelection === "Paper") {
+
+    } else if((playerSelection === "Rock") && (computerSelection === "Paper")) {
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
 
-    } else if((playerSelection === "Paper") && computerSelection === "Scissors") {
+    } else if((playerSelection === "Paper") && (computerSelection === "Scissors")) {
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
 
-    } else if((playerSelection === "Scissors") && computerSelection === "Rock") {
+    } else if((playerSelection === "Scissors") && (computerSelection === "Rock")) {
     return `You Lose! ${computerSelection} beats ${playerSelection}`;
 
     } else return `You Win! ${playerSelection} beats ${computerSelection}`;
 }
 
-/*
+
 function equalizeInput(string) {
-    
+    string = string.toLowerCase();
+    string = string.charAt(0).toUpperCase() + string.slice(1);
+    return string;
 }
-*/
+
 const playerSelection = "rock";
 const computerSelection = computerPlay();
