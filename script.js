@@ -31,6 +31,13 @@ function playRound(playerSelection, computerSelection) {
     } else return `You Win! ${playerSelection} beats ${computerSelection}`;
 }
 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+    }
+}
+
 
 function equalizeInput(string) {
     string = string.toLowerCase();
@@ -39,4 +46,4 @@ function equalizeInput(string) {
 }
 
 const playerSelection = "rock";
-const computerSelection = computerPlay();
+// const computerSelection = computerPlay();
