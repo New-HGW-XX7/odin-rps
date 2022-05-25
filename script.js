@@ -23,18 +23,32 @@ function playRound(playerSelection, computerSelection) {
         return `You Lose! ${computerSelection} beats ${playerSelection}`;
 
     } else if((playerSelection === "Paper") && (computerSelection === "Scissors")) {
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
 
     } else if((playerSelection === "Scissors") && (computerSelection === "Rock")) {
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
 
-    } else return `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else {
+        return `You Win! ${playerSelection} beats ${computerSelection}`;
+    }
 }
 
 function game() {
+    let cC = 0; let pC = 0; let tC = 0;
     for (let i = 0; i < 5; i++) {
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        const computerSelection = computerPlay(); // Has to be refreshed inside the function
+        let check = playRound(playerSelection, computerSelection);
+
+        (check.includes("Lose")) ? cC++ : (check.includes("Win")) ? pC++ : tC++;
+
+        console.log(`Round ${i+1}: ` + check);
+    }
+    if(tC === 5) {
+        console.log("It's a Tie!");
+    } else if(cC > pC) {
+        console.log("Computer is the Winner!");
+    } else {
+        console.log("You are the Winner!");
     }
 }
 
