@@ -2,12 +2,32 @@ function computerPlay() {
     const randomNumber = Math.floor(Math.random() * 3); // RN between 0 and 2
     switch(randomNumber) {
         case 0:
-            return "rock";
+            return "Rock";
             break;
         case 1:
-            return "paper";
+            return "Paper";
             break;
         case 2:
-            return "scissor";
+            return "Scissors";
     }
 }
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    // Also add firstLetterUp here
+    if(playerSelection === computerSelection) {
+        return "Tie";
+    } else if((playerSelection === "Rock") && computerSelection === "Paper") {
+        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+
+    } else if((playerSelection === "Paper") && computerSelection === "Scissors") {
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+
+    } else if((playerSelection === "Scissors") && computerSelection === "Rock") {
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    
+    } else return `You Win! ${playerSelection} beats ${computerSelection}`;
+}
+
+const playerSelection = "rock";
+const computerSelection = computerPlay();
