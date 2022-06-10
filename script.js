@@ -7,17 +7,6 @@ const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
 
-/*rock.addEventListener('click', () => {
-    const result = document.createElement('p');
-
-    result.textContent = check(playRound('Rock', computerPlay()));
-    score.appendChild(result);
-
-    if(i === 5) {
-        winner.textContent = checkWinner();
-        score.appendChild(winner);
-    }
-});*/
 rock.addEventListener('click', () => outsourceEvent('Rock'));
 
 paper.addEventListener('click', () => outsourceEvent('Paper'));
@@ -25,6 +14,7 @@ paper.addEventListener('click', () => outsourceEvent('Paper'));
 scissors.addEventListener('click', () => outsourceEvent('Scissors'));
 
 function computerPlay() {
+    
     const randomNumber = Math.floor(Math.random() * 3); // RN between 0 and 2
     switch(randomNumber) {
         case 0:
@@ -58,10 +48,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function outsourceEvent(x) {
+function outsourceEvent(playerChoice) {
+
     const result = document.createElement('p');
 
-    result.textContent = check(playRound(x, computerPlay()));
+    result.textContent = checkRound(playRound(playerChoice, computerPlay()));
     score.appendChild(result);
 
     if(i === 5) {
@@ -70,7 +61,7 @@ function outsourceEvent(x) {
     }   
 }
 
-function check(input) {
+function checkRound(input) {
 
      if(i < 5) {
         if(input.includes("Lose")) {cC++};
