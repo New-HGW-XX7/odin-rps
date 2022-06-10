@@ -1,20 +1,24 @@
-let i = 0, pC = 0, cC = 0, rC = 0;
+let i = 0, pC = 0, cC = 0;
 
 const score = document.querySelector('.score');
+const winner = document.createElement('p');
 
 const rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
     const result = document.createElement('p');
-    const winner = document.createElement('p');
 
-    let tempResult = playRound('Rock', computerPlay());
-    result.textContent = check(tempResult);
+    result.textContent = check2(playRound('Rock', computerPlay()));
     score.appendChild(result);
 
-    if(rC === 5) {
-        winner.textContent = checkWinner();
+    tempWinner = checkWinner2();
+    if(tempWinner != "") {
+        winner.textContent = tempWinner;
         score.appendChild(winner);
     }
+    // if(i === 5) {
+    //     winner.textContent = checkWinner();
+    //     score.appendChild(winner);
+    // }
 });
 
 const paper = document.querySelector('.paper');
@@ -65,20 +69,19 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function check(input) {
+/*function check(input) {
 
         if(i < 5) {
             if(input.includes("Lose")) {cC++};
             if(input.includes("Win")) {pC++}; 
 
             i++;
-            rC++;
             return `Round ${i}: ${input}`;
         }
 }
 
 function checkWinner() {
-    
+
     if(cC === pC) {
         return "It's a Tie!";
     } else if(cC > pC) {
@@ -86,6 +89,22 @@ function checkWinner() {
     } else {
         return "You are the Winner!";
     }
+}*/
+
+// Below follows what the exercise actually demands. I misread and only allowed for 5 rounds in total.
+function check2(input) {
+
+    if(input.includes("Lose")) {cC++};
+    if(input.includes("Win")) {pC++}; 
+
+    i++;
+    return `Round ${i}: ${input}`;
+}
+
+function checkWinner2() {
+
+    if(cC === 5) {return "Computer is the Winner!";}
+    if(pC === 5) {return "You are the Winner!";}
 }
 
 /*
