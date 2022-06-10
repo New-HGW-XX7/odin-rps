@@ -1,3 +1,26 @@
+const score = document.querySelector('.score');
+
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+    const result = document.createElement('p');
+    result.textContent = playRound('Rock', computerPlay());
+    score.appendChild(result);
+});
+
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+    const result = document.createElement('p');
+    result.textContent = playRound('Paper', computerPlay());
+    score.appendChild(result);
+});
+
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+    const result = document.createElement('p');
+    result.textContent = playRound('Scissors', computerPlay());
+    score.appendChild(result);
+});
+
 function computerPlay() {
     const randomNumber = Math.floor(Math.random() * 3); // RN between 0 and 2
     switch(randomNumber) {
@@ -13,7 +36,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = equalizeInput(playerSelection);
+    // playerSelection = equalizeInput(playerSelection);
 
     if(playerSelection === computerSelection) {
         return "Tie";
@@ -32,6 +55,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+/*
 function game() {
     let cC = 0; let pC = 0;
 
@@ -54,9 +78,12 @@ function game() {
         console.log("You are the Winner!");
     }
 }
+*/
 
+/*
 function equalizeInput(string) {
     string = string.toLowerCase();
     string = string.charAt(0).toUpperCase() + string.slice(1);
     return string;
 }
+*/
