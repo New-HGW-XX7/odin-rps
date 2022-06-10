@@ -1,10 +1,20 @@
+let i = 0, pC = 0, cC = 0, rC = 0;
+
 const score = document.querySelector('.score');
 
 const rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
     const result = document.createElement('p');
-    result.textContent = playRound('Rock', computerPlay());
+    const winner = document.createElement('p');
+
+    let tempResult = playRound('Rock', computerPlay());
+    result.textContent = check(tempResult);
     score.appendChild(result);
+
+    if(rC === 5) {
+        winner.textContent = checkWinner();
+        score.appendChild(winner);
+    }
 });
 
 const paper = document.querySelector('.paper');
@@ -36,7 +46,7 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    // playerSelection = equalizeInput(playerSelection);
+    // playerSelection = equalizeInput(playerSelection); No longer needed in GUI-version
 
     if(playerSelection === computerSelection) {
         return "Tie";
@@ -52,6 +62,29 @@ function playRound(playerSelection, computerSelection) {
 
     } else {
         return `You Win! ${playerSelection} beats ${computerSelection}`;
+    }
+}
+
+function check(input) {
+
+        if(i < 5) {
+            if(input.includes("Lose")) {cC++};
+            if(input.includes("Win")) {pC++}; 
+
+            i++;
+            rC++;
+            return `Round ${i}: ${input}`;
+        }
+}
+
+function checkWinner() {
+    
+    if(cC === pC) {
+        return "It's a Tie!";
+    } else if(cC > pC) {
+        return "Computer is the Winner!";
+    } else {
+        return "You are the Winner!";
     }
 }
 
