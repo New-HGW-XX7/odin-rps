@@ -4,7 +4,10 @@ const score = document.querySelector('.score');
 const winner = document.createElement('p');
 
 const rock = document.querySelector('.rock');
-rock.addEventListener('click', () => {
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+/*rock.addEventListener('click', () => {
     const result = document.createElement('p');
 
     result.textContent = check(playRound('Rock', computerPlay()));
@@ -14,33 +17,12 @@ rock.addEventListener('click', () => {
         winner.textContent = checkWinner();
         score.appendChild(winner);
     }
-});
+});*/
+rock.addEventListener('click', () => outsourceEvent('Rock'));
 
-const paper = document.querySelector('.paper');
-paper.addEventListener('click', () => {
-    const result = document.createElement('p');
+paper.addEventListener('click', () => outsourceEvent('Paper'));
 
-    result.textContent = check(playRound('Paper', computerPlay()));
-    score.appendChild(result);
-
-    if(i === 5) {
-        winner.textContent = checkWinner();
-        score.appendChild(winner);
-    }
-});
-
-const scissors = document.querySelector('.scissors');
-scissors.addEventListener('click', () => {
-    const result = document.createElement('p');
-
-    result.textContent = check(playRound('Scissors', computerPlay()));
-    score.appendChild(result);
-
-    if(i === 5) {
-        winner.textContent = checkWinner();
-        score.appendChild(winner);
-    }
-});
+scissors.addEventListener('click', () => outsourceEvent('Scissors'));
 
 function computerPlay() {
     const randomNumber = Math.floor(Math.random() * 3); // RN between 0 and 2
@@ -74,6 +56,18 @@ function playRound(playerSelection, computerSelection) {
     } else {
         return `You Win! ${playerSelection} beats ${computerSelection}`;
     }
+}
+
+function outsourceEvent(x) {
+    const result = document.createElement('p');
+
+    result.textContent = check(playRound(x, computerPlay()));
+    score.appendChild(result);
+
+    if(i === 5) {
+        winner.textContent = checkWinner();
+        score.appendChild(winner);
+    }   
 }
 
 function check(input) {
