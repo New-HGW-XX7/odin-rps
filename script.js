@@ -7,32 +7,39 @@ const rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
     const result = document.createElement('p');
 
-    result.textContent = check2(playRound('Rock', computerPlay()));
+    result.textContent = check(playRound('Rock', computerPlay()));
     score.appendChild(result);
 
-    tempWinner = checkWinner2();
-    if(tempWinner != "") {
-        winner.textContent = tempWinner;
+    if(i === 5) {
+        winner.textContent = checkWinner();
         score.appendChild(winner);
     }
-    // if(i === 5) {
-    //     winner.textContent = checkWinner();
-    //     score.appendChild(winner);
-    // }
 });
 
 const paper = document.querySelector('.paper');
 paper.addEventListener('click', () => {
     const result = document.createElement('p');
-    result.textContent = playRound('Paper', computerPlay());
+
+    result.textContent = check(playRound('Paper', computerPlay()));
     score.appendChild(result);
+
+    if(i === 5) {
+        winner.textContent = checkWinner();
+        score.appendChild(winner);
+    }
 });
 
 const scissors = document.querySelector('.scissors');
 scissors.addEventListener('click', () => {
     const result = document.createElement('p');
-    result.textContent = playRound('Scissors', computerPlay());
+
+    result.textContent = check(playRound('Scissors', computerPlay()));
     score.appendChild(result);
+
+    if(i === 5) {
+        winner.textContent = checkWinner();
+        score.appendChild(winner);
+    }
 });
 
 function computerPlay() {
@@ -69,15 +76,15 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/*function check(input) {
+function check(input) {
 
-        if(i < 5) {
-            if(input.includes("Lose")) {cC++};
-            if(input.includes("Win")) {pC++}; 
+     if(i < 5) {
+        if(input.includes("Lose")) {cC++};
+        if(input.includes("Win")) {pC++}; 
 
-            i++;
-            return `Round ${i}: ${input}`;
-        }
+        i++;
+        return `Round ${i}: ${input}`;
+    }
 }
 
 function checkWinner() {
@@ -89,9 +96,13 @@ function checkWinner() {
     } else {
         return "You are the Winner!";
     }
-}*/
+}
+
+
 
 // Below follows what the exercise actually demands. I misread and only allowed for 5 rounds in total.
+// Slight adjustments have to be made for the eventlisteners to implement this solution.
+/*
 function check2(input) {
 
     if(input.includes("Lose")) {cC++};
@@ -106,7 +117,11 @@ function checkWinner2() {
     if(cC === 5) {return "Computer is the Winner!";}
     if(pC === 5) {return "You are the Winner!";}
 }
+*/
 
+
+
+// Old code from the non-GUI version
 /*
 function game() {
     let cC = 0; let pC = 0;
